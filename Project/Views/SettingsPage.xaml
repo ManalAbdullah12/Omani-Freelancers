@@ -1,0 +1,90 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project.Views"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.SettingsPage"
+             BackgroundColor="#F5F5DC">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Label Text="Edit Profile Information" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20"/>
+
+                    <StackLayout>
+                        <Label Text="Profile Pic *" TextColor="Red"/>
+                        <Frame BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="80" HeightRequest="150" HorizontalOptions="Center" WidthRequest="150" Padding="0">
+                            <Image x:Name="ProfilePic" Source="{Binding ProfilePic}" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeProfilePicCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout>
+                        <Label Text="ID Card Pic *" TextColor="Red"/>
+                        <Frame BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="80" HeightRequest="150" HorizontalOptions="Center" WidthRequest="150" Padding="0">
+                            <Image x:Name="IdCardPic" Source="{Binding IdCardPic}" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ChangeIdCardPicCommand}" />
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="ID Card Number *" TextColor="Red"/>
+                        <Entry Placeholder="Enter ID Card Number" FontSize="16" x:Name="EntryCardNumber"  Text="{Binding IdCardNumber}" PlaceholderColor="Red" TextColor="Black" Keyboard="Numeric"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="User Name *" TextColor="Red"/>
+                        <Entry Placeholder="User Name" FontSize="16" x:Name="EntryUserName" PlaceholderColor="Red" Text="{Binding UserName}" />
+                        <Label Text="User Name cannot be empty" IsVisible="{Binding IsUserNameEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Password *" TextColor="Red"/>
+                        <Entry Placeholder="Password" FontSize="16" x:Name="EntryUserPassword" PlaceholderColor="Red" IsPassword="True" Text="{Binding Password}" />
+                        <Label Text="Password cannot be empty" IsVisible="{Binding IsPasswordEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Confirm Password *" TextColor="Red"/>
+                        <Entry Placeholder="Confirm Password" FontSize="16" x:Name="EntryConfirmPassword" PlaceholderColor="Red" IsPassword="True" Text="{Binding ConfirmPassword}" />
+                        <Label Text="Passwords do not match" IsVisible="{Binding DoPasswordsMatch}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Name *" TextColor="Red"/>
+                        <Entry Placeholder="Name" FontSize="16" x:Name="EntryName" PlaceholderColor="Red" Text="{Binding Name_}" />
+                        <!-- Updated binding to Name_ -->
+                        <Label Text="Name cannot be empty" IsVisible="{Binding IsNameEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Last Name *" TextColor="Red"/>
+                        <Entry Placeholder="Last Name" FontSize="16" x:Name="EntryLastName" PlaceholderColor="Red" Text="{Binding LastName}" />
+                        <Label Text="Last Name cannot be empty" IsVisible="{Binding IsLastNameEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Email *" TextColor="Red"/>
+                        <Entry Placeholder="Email" FontSize="16" x:Name="EntryUserEmail" PlaceholderColor="Red" Text="{Binding Email}" />
+                        <Label Text="Email cannot be empty" IsVisible="{Binding IsEmailEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="Phone Number *" TextColor="Red"/>
+                        <Entry Placeholder="Phone Number" FontSize="16" x:Name="EntryUserPhoneNumber" PlaceholderColor="Red" Keyboard="Telephone" Text="{Binding PhoneNumber}" />
+                        <Label Text="Phone Number cannot be empty" IsVisible="{Binding IsPhoneNumberEmpty}" TextColor="Red" />
+                    </StackLayout>
+
+                    <Button Text="Save Changes" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Margin="20,10" Command="{Binding SaveChangesCommand}" />
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

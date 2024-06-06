@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.PaymentList"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid RowSpacing="20" Padding="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="Successfull Payments" FontSize="24" FontAttributes="Bold"  />
+                <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" CornerRadius="10" Padding="0,0,0,10" Margin="0">
+                                <StackLayout Spacing="10" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <Grid ColumnDefinitions="*,*">
+                                        <Label Text="Activity" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1" Text="{Binding JobTitle}"></Label>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*" x:Name="FreelancerVisible">
+                                        <Label Text="Freelancer Name" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1"  Text="{Binding FreelancerFullName}"></Label>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding BindingContext._IsClient, Source={x:Reference this}}" Value="True">
+                                                <Setter Property="IsVisible" Value="True" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding BindingContext._IsClient, Source={x:Reference this}}" Value="False">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*" x:Name="ClientVisible">
+                                        <Label Text="Client Name" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1"  Text="{Binding UserFullName}"></Label>
+                                        <Grid.Triggers>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding BindingContext._IsClient, Source={x:Reference this}}" Value="True">
+                                                <Setter Property="IsVisible" Value="False" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Grid" Binding="{Binding BindingContext._IsClient, Source={x:Reference this}}" Value="False">
+                                                <Setter Property="IsVisible" Value="True" />
+                                            </DataTrigger>
+                                        </Grid.Triggers>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*">
+                                        <Label Text="Maximum Budget" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1" Text="{Binding Price}"></Label>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*">
+                                        <Label Text="Starting Date" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1" Text="{Binding StartingDate}"></Label>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*">
+                                        <Label Text="Assign Date" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1" Text="{Binding JobCreatedDate}"></Label>
+                                    </Grid>
+                                    <Grid ColumnDefinitions="*,*" IsVisible="{Binding IsJobFinished}">
+                                        <Label Text="Job Status" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Grid.Column="1" Text="Finished" TextColor="Green" FontAttributes="Bold"></Label>
+                                    </Grid>
+                                </StackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

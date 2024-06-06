@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.AdminPages.FullProfile"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Spacing="15" Padding="10" HorizontalOptions="FillAndExpand">
+                    <Label Text="User Profile" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,10"  TextColor="Gray"/>
+                    <Frame BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="150" HorizontalOptions="Center" WidthRequest="150" Padding="0">
+                        <Image x:Name="ProfilePic" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        </Image>
+                    </Frame>
+                    <Frame BackgroundColor="White" CornerRadius="10" Padding="10,20" HasShadow="True" Margin="20,0">
+                        <Grid ColumnDefinitions="Auto, *" RowSpacing="30" Margin="10">
+                            <Label Text="UserName:" FontAttributes="Bold" FontSize="15" Grid.Column="0" TextColor="Gray" />
+                            <Label Text="{Binding UserData.UserName}" TextColor="Black" FontSize="15" Grid.Column="1" />
+
+                            <Label Text="Full Name:" FontAttributes="Bold" FontSize="15" Grid.Row="1" Grid.Column="0" TextColor="Gray" />
+                            <Label TextColor="Black" FontSize="15" Grid.Row="1" Grid.Column="1" >
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding UserData.Name_}"></Span>
+                                        <Span Text=" "></Span>
+                                        <Span Text="{Binding UserData.LastName}"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label Text="Email:" FontAttributes="Bold" FontSize="15" Grid.Row="2" Grid.Column="0" TextColor="Gray" />
+                            <Label Text="{Binding UserData.Email}" TextColor="Black" FontSize="15" Grid.Row="2" Grid.Column="1" />
+
+                            <Label Text="ID Card Number:" FontAttributes="Bold" FontSize="15" Grid.Row="3" Grid.Column="0" TextColor="Gray"/>
+                            <Label Text="{Binding UserData.IdCardNumber}" TextColor="Black" FontSize="15" Grid.Row="3" Grid.Column="1" />
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+        <!--<StackLayout>
+         
+
+            <StackLayout>
+                <Label Text="ID Card Pic *" TextColor="Red"/>
+                <Frame BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="80" HeightRequest="150" HorizontalOptions="Center" WidthRequest="150" Padding="0">
+                    <Image x:Name="IdCardPic" Aspect="Fill" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    </Image>
+                </Frame>
+            </StackLayout>
+        </StackLayout>-->
+    </ContentPage.Content>
+</ContentPage>

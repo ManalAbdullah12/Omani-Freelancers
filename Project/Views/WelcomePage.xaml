@@ -1,0 +1,40 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project.Views"
+             x:Class="Project.Views.WelcomePage"
+             BackgroundColor="#F5F5DC">
+
+    <ContentPage.Content>
+        <Grid VerticalOptions="CenterAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image x:Name="LogoImage"
+                HeightRequest="230"
+                   WidthRequest="230"
+HorizontalOptions="Center"
+VerticalOptions="Start" />
+
+            <!-- Loading indicator -->
+            <ActivityIndicator IsRunning="True"
+                               Color="DarkOrange"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Grid.Row="1" />
+
+            <!-- Welcome message -->
+            <!--<Label Text="Welcome to the Omani Freelancers App.."
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="Purple"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   Grid.Row="2"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap" />-->
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

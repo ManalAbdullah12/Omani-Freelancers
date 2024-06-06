@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="Project.Controls.Loader"
+      IsVisible="False"
+      VerticalOptions="FillAndExpand"
+      HorizontalOptions="FillAndExpand"
+      x:Name="this">
+    <Frame Grid.Row="0" IsEnabled="False" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#F5F5DC" BorderColor="Black" Opacity="0.4"></Frame>
+    <StackLayout  HorizontalOptions="Center"
+ VerticalOptions="Center">
+        <Image x:Name="LogoImage"
+       HeightRequest="150"
+               Opacity="1"
+       WidthRequest="230"
+       HorizontalOptions="Center"
+       VerticalOptions="Center" />
+        <ActivityIndicator Color="DarkOrange" VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   IsRunning="True" IsVisible="True"/>
+    </StackLayout>
+    
+</Grid>

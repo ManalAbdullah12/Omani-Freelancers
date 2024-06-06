@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.FreelancerCreatePosts"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CustomCheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Color" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Spacing="20">
+                    <!-- Title -->
+                    <Label Text="Create a New Post" TextColor="Gray" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20"/>
+
+                    <!-- Photo Upload -->
+                    <StackLayout Margin="20,10" x:Name="PostPhoto" IsVisible="False">
+                        <Label Text="Photo *" TextColor="Red"/>
+                        <Button Text="Upload Photo" Clicked="OnUploadPhotoClicked" TextColor="Black" BackgroundColor="LightGray"/>
+                    </StackLayout>
+
+                    <!-- Post Link Entry -->
+                    <StackLayout Margin="20,10" x:Name="PostLink" IsVisible="False">
+                        <Label Text="Post Link *" TextColor="Red"/>
+                        <Entry Placeholder="Post Link" FontSize="16" x:Name="EntryPostLink" PlaceholderColor="Red" TextColor="Black"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10">
+                        <Label Text="User Type *" TextColor="Red"/>
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <CheckBox x:Name="ClientCheckBox" Style="{StaticResource CustomCheckBoxStyle}" IsChecked="{Binding IsCheckedClient}" CheckedChanged="ClientCheckBox_CheckedChanged" />
+                                <Label Text="Photo" FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                <CheckBox x:Name="FreelancerCheckBox" Style="{StaticResource CustomCheckBoxStyle}" IsChecked="{Binding IsCheckedFreelancer}" CheckedChanged="FreelancerCheckBox_CheckedChanged" />
+                                <Label Text="Url" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="10,0" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- Post Description Entry -->
+                    <StackLayout Margin="20,10">
+                        <Label Text="Post Description *" TextColor="Red"/>
+                        <Entry x:Name="EntryPostDescription" Placeholder="Post Description" FontSize="16" PlaceholderColor="Red" TextColor="Black"/>
+                    </StackLayout>
+
+                    <!-- Create Button -->
+                    <Button Text="Create" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Margin="20,10" Clicked="CreateButton_Clicked"/>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

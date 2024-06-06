@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.FreelancerJobHistoryDetails"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Spacing="15" Padding="10" HorizontalOptions="FillAndExpand">
+                    <Label Text="Request Jobs" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,20,0,10" />
+
+                    <Frame BackgroundColor="White" CornerRadius="10" Padding="10,20" HasShadow="True" Margin="20,0">
+                        <Grid ColumnDefinitions="Auto, *" RowSpacing="20">
+                            <Label Text="Activity:" FontAttributes="Bold" FontSize="15" Grid.Column="0" />
+                            <Label Text="{Binding UserData.JobTitle}" FontSize="15" Grid.Column="1" />
+
+                            <Label Text="Client Name:" FontAttributes="Bold" FontSize="15" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="{Binding UserData.UserFullName}" FontSize="15" Grid.Row="1" Grid.Column="1" />
+
+                            <Label Text="Description:" FontAttributes="Bold" FontSize="15" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="{Binding UserData.JobDescription}" FontSize="15" Grid.Row="2" Grid.Column="1" />
+
+                            <Label Text="Starting Date:" FontAttributes="Bold" FontSize="15" Grid.Row="3" Grid.Column="0" />
+                            <Label Text="{Binding UserData.StartingDate}" FontSize="15" Grid.Row="3" Grid.Column="1" />
+
+                            <Label Text="Timeline:" FontAttributes="Bold" FontSize="15" Grid.Row="4" Grid.Column="0" />
+                            <Label Text="{Binding UserData.TimeLine}" FontSize="15" Grid.Row="4" Grid.Column="1" />
+
+                            <Label Text="Phone Number:" FontAttributes="Bold" FontSize="15" Grid.Row="5" Grid.Column="0" />
+                            <Label Text="{Binding UserData.PhoneNumber}" FontSize="15" Grid.Row="5" Grid.Column="1" />
+
+                            <Label Text="ID Card Number:" FontAttributes="Bold" FontSize="15" Grid.Row="6" Grid.Column="0" />
+                            <Label Text="{Binding UserData.IDcardNumber}" FontSize="15" Grid.Row="6" Grid.Column="1" />
+
+                            <Label Text="Maximum Budget:" FontAttributes="Bold" FontSize="15" Grid.Row="7" Grid.Column="0" />
+                            <Label Text="{Binding UserData.Price}" FontSize="15" Grid.Row="7" Grid.Column="1" />
+
+                            <Label Text="Activity Created:" FontAttributes="Bold" FontSize="15" Grid.Row="8" Grid.Column="0" />
+                            <Label Text="{Binding UserData.JobCreatedDate}" FontSize="15" Grid.Row="8" Grid.Column="1" />
+
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

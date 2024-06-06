@@ -1,0 +1,50 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.LoginPage"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout VerticalOptions="CenterAndExpand" Spacing="20">
+                    <Image x:Name="LogoImage"
+                       HeightRequest="150"
+                       Aspect="AspectFit"
+                       VerticalOptions="Start" />
+
+                    <!-- Title -->
+                    <Label TextColor="Gray" Text="Login to the Omani Freelancers App" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Margin="20,0"/>
+
+                    <StackLayout  Margin="10" Spacing="20">
+                        <!-- User Name Entry -->
+                        <StackLayout>
+                            <Label Text="User Name *" TextColor="Red"/>
+                            <Entry Placeholder="User Name" x:Name="EntryUser" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Password Entry -->
+                        <StackLayout>
+                            <Label Text="Password *" TextColor="Red"/>
+                            <Entry Placeholder="Password" x:Name="EntryPassword" IsPassword="True" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Margin="20,10" Spacing="10">
+                        <!-- Login Button -->
+                        <Button Text="Login" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Clicked="Button_Clicked_1"/>
+
+                        <!-- Sign Up Button -->
+                        <Button Text="Sign Up" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Clicked="Button_Clicked"/>
+
+                        <!-- Forgot Password Link -->
+                        <Label Text="Forgot Password?" TextColor="Black" HorizontalOptions="Center" Margin="0,10">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="ForgotPassword_Tapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

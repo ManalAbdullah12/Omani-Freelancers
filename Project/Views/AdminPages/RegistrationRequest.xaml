@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.AdminPages.RegistrationRequest"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Margin="20" Spacing="20">
+                    <Label Text="Registration Requests" FontSize="24" FontAttributes="Bold"  />
+                    <StackLayout Orientation="Horizontal">
+                        <Button x:Name="Tab1" Text="Client Requests" Clicked="Tab1_Clicked" CornerRadius="9" BorderColor="White" BackgroundColor="Gray" TextColor="White"></Button>
+                        <Button x:Name="Tab2" Text="Freelancer Requests" Clicked="Tab2_Clicked" CornerRadius="9" BorderColor="White" BackgroundColor="LightGray" TextColor="White"></Button>
+                    </StackLayout>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding UsersList}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" CornerRadius="10" Padding="0,0,0,10" Margin="0">
+                                    <StackLayout Spacing="20" HorizontalOptions="FillAndExpand" Padding="20">
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="UserName" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding UserName}"></Label>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="Id Card Number" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding IdCardNumber}"></Label>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="Email" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding Email}"></Label>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="Phone Number" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding PhoneNumber}"></Label>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="Full Name" FontAttributes="Bold" FontSize="15"></Label>
+                                            <StackLayout Orientation="Horizontal" Grid.Column="1">
+                                                <Label Text="{Binding Name_}"></Label>
+                                                <Label Text=" "></Label>
+                                                <Label Text="{Binding LastName}"></Label>
+                                            </StackLayout>
+                                            
+                                        </Grid>
+                                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                            <Button Text="Accept" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" VerticalOptions="CenterAndExpand" CornerRadius="15" Clicked="OnAcceptClicked"/>
+                                            <Button Text="Reject" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" VerticalOptions="CenterAndExpand" CornerRadius="15" Clicked="OnRejectClicked"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="Isbusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

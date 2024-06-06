@@ -1,0 +1,41 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.FreelancerFollowers"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC">
+
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout x:Name="MainLayout" Padding="20">
+                    <!-- Back Button -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start">
+                        <Button Text="Back" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" CornerRadius="15" Clicked="BackButton_Clicked"/>
+                        <Label Text="Followers" FontSize="24" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="20,0,0,0" />
+                    </StackLayout>
+
+                    <!-- List of Followers -->
+                    <ListView x:Name="FollowersListView">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" Padding="10">
+                                        <!-- Profile Picture -->
+                                        <Image Source="{Binding ProfilePicture}" WidthRequest="50" HeightRequest="50" Aspect="AspectFill" />
+
+                                        <!-- Username and Full Name -->
+                                        <StackLayout>
+                                            <Label Text="{Binding UserName}" FontSize="18" FontAttributes="Bold" />
+                                            <Label Text="{Binding FullName}" FontSize="14" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

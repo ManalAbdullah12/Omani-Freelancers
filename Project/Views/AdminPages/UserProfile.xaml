@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.AdminPages.UserProfile"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Margin="20" Spacing="20">
+                    <Label x:Name="TopText" FontSize="24" FontAttributes="Bold"  />
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding UsersList}">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White" CornerRadius="10" Padding="0,0,0,10" Margin="0">
+                                    <StackLayout Spacing="20" HorizontalOptions="FillAndExpand" Padding="20">
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="UserName" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding UserName}"></Label>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label Text="Id Card Number" FontAttributes="Bold" FontSize="15"></Label>
+                                            <Label Grid.Column="1" Text="{Binding IdCardNumber}"></Label>
+                                        </Grid>
+                                        <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                                            <Button Text="View" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" VerticalOptions="CenterAndExpand" CornerRadius="15" Clicked="OnViewProfileClicked"/>
+                                            <Button Text="Delete" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" VerticalOptions="CenterAndExpand" CornerRadius="15" Clicked="OnDeleteClicked"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="Isbusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

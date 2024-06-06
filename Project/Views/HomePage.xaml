@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.HomePage">
+    <ContentPage.Content>
+        <Grid>
+            <Button Text="Logout" TextColor="#0077be" Clicked="Button_Clicked"></Button>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

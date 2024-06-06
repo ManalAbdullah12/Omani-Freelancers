@@ -1,0 +1,62 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project.Views"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.PaymentPage"
+             BackgroundColor="#F5F5DC">
+
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Padding="20" Spacing="10">
+                    <Label Text="Payment" FontSize="24" FontAttributes="Bold" Margin="0,20,0,10" />
+
+                    <!-- Payment Entry Fields -->
+                    <StackLayout Spacing="10">
+                        <Label Text="Card Number *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter card number" Keyboard="Numeric" x:Name="EntryCardNumber"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="Cardholder Name *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter cardholder name" x:Name="EntryCardholderName"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="Expiry Date (MM/YY) *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="MM/YY" Keyboard="Numeric" x:Name="EntryExpiryDate"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="CVV/CVC *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter CVV/CVC" Keyboard="Numeric" x:Name="EntryCVV"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="Billing Address *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter billing address" x:Name="EntryBillingAddress"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="City *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter city" x:Name="EntryCity"/>
+                    </StackLayout>
+
+                    <StackLayout Spacing="10">
+                        <Label Text="Zip/Postal Code *" FontSize="16" FontAttributes="Bold" TextColor="Red"/>
+                        <Entry Placeholder="Enter zip/postal code" Keyboard="Numeric" x:Name="EntryZipCode"/>
+                    </StackLayout>
+
+                    <!-- Buttons -->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+                        <Button Text="Pay Now" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="20" FontAttributes="Bold" FontSize="14" Clicked="PayNow_Clicked"/>
+                        <Button Text="Cancel" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="20" FontAttributes="Bold" FontSize="14"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

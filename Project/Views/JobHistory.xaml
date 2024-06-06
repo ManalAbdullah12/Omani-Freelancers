@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.JobHistory"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC"
+         x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Main content -->
+                    <StackLayout Padding="20">
+                        <Label Text="Request Jobs" FontSize="24" FontAttributes="Bold"  />
+                        <CollectionView Grid.Row="1" ItemsSource="{Binding Items}">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Vertical"
+                           ItemSpacing="10"/>
+                            </CollectionView.ItemsLayout>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame BackgroundColor="White" CornerRadius="10" Padding="10,20" HasShadow="True">
+                                        <StackLayout Spacing="10" HorizontalOptions="FillAndExpand" Padding="10">
+                                            <Grid ColumnDefinitions="*,*">
+                                                <Label Text="Activity" FontAttributes="Bold" FontSize="15"></Label>
+                                                <Label Grid.Column="1" Text="{Binding JobTitle}"></Label>
+                                            </Grid>
+                                            <Grid ColumnDefinitions="*,*">
+                                                <Label Text="Client Name" FontAttributes="Bold" FontSize="15"></Label>
+                                                <Label Grid.Column="1"  Text="{Binding UserFullName}"></Label>
+                                            </Grid>
+                                            <Grid ColumnDefinitions="*,*">
+                                                <Label Text="Maximum Budget" FontAttributes="Bold" FontSize="15"></Label>
+                                                <Label Grid.Column="1" Text="{Binding Price}"></Label>
+                                            </Grid>
+
+                                            <Grid ColumnDefinitions="*,*" IsVisible="{Binding IsJobFinished}">
+                                                <Label Text="Job Status" FontAttributes="Bold" FontSize="15"></Label>
+                                                <Label Grid.Column="1" Text="Finished" TextColor="Green" FontAttributes="Bold"></Label>
+                                            </Grid>
+
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding IsAccepted}" Value="True">
+                                                        <Setter Property="IsVisible" Value="False" />
+                                                    </DataTrigger>
+                                                    <DataTrigger TargetType="StackLayout" Binding="{Binding IsAccepted}" Value="False">
+                                                        <Setter Property="IsVisible" Value="True" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+
+                                                <Button Text="Accept" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" HeightRequest="30" Margin="5,0" CornerRadius="15" 
+                        Command="{Binding Path=BindingContext.SubmitJobCommand, Source={x:Reference Name=this}}"
+                        CommandParameter="{Binding .}" />
+                                                <Button Text="Reject" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" HeightRequest="30" Margin="5,0" CornerRadius="15" 
+                        Command="{Binding Path=BindingContext.RejectJobCommand, Source={x:Reference Name=this}}"
+                        CommandParameter="{Binding .}" />
+                                            </StackLayout>
+                                        </StackLayout>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                                        </Frame.GestureRecognizers>
+                                    </Frame>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

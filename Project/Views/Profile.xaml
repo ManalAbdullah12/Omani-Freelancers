@@ -1,0 +1,94 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Project.Views"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.Profile"
+             BackgroundColor="#F5F5DC">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Main content -->
+                <StackLayout Padding="20">
+                    <!-- Profile Picture and Name -->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Start" Margin="0,0,0,20">
+                        <Image x:Name="ProfileImage" WidthRequest="80" HeightRequest="80" Aspect="AspectFill" 
+                           VerticalOptions="Center" HorizontalOptions="Start" 
+                           Margin="0,0,20,0" />
+                        <StackLayout>
+                            <Label x:Name="FullNameLabel" FontSize="20" FontAttributes="Bold" />
+                            <Label x:Name="UsernameLabel" FontSize="16" />
+                            <Label x:Name="FreelancerTypeLabel" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- Followers Info and Follow Button -->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,20,0,0">
+                        <StackLayout x:Name="FollowersLayout" HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                            <Label Text="Followers" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label x:Name="FollowersCountLabel" FontSize="16" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <StackLayout x:Name="FollowingLayout" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="20,0,0,0">
+                            <Label Text="Following" FontSize="16" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                            <Label x:Name="FollowingCountLabel" FontSize="16" HorizontalTextAlignment="Center"/>
+                        </StackLayout>
+                        <Button Text="Follow" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="15" WidthRequest="80" HeightRequest="30"/>
+                    </StackLayout>
+
+                    <!-- My Work Section -->
+                    <Label Text="My Work" FontSize="24" FontAttributes="Bold" Margin="0,30,0,10" />
+
+                    <!-- Instagram Story Highlights -->
+                    <StackLayout Orientation="Horizontal" Spacing="10" HorizontalOptions="CenterAndExpand">
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Frame WidthRequest="50" HeightRequest="50" BackgroundColor="#ECECEC" CornerRadius="25" BorderColor="Black" HasShadow="False" />
+                            <Label Text="Grads" HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Frame WidthRequest="50" HeightRequest="50" BackgroundColor="#ECECEC" CornerRadius="25" BorderColor="Black" HasShadow="False" />
+                            <Label Text="Events" HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Frame WidthRequest="50" HeightRequest="50" BackgroundColor="#ECECEC" CornerRadius="25" BorderColor="Black" HasShadow="False" />
+                            <Label Text="Weddings" HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Frame WidthRequest="50" HeightRequest="50" BackgroundColor="#ECECEC" CornerRadius="25" BorderColor="Black" HasShadow="False" />
+                            <Label Text="Birthdays" HorizontalOptions="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                            <Frame WidthRequest="50" HeightRequest="50" BackgroundColor="#ECECEC" CornerRadius="25" BorderColor="Black" HasShadow="False" />
+                            <Label Text="Other" HorizontalOptions="Center" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!-- Buttons -->
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Center">
+                        <Button Text="Request Job" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="20" FontAttributes="Bold" FontSize="18" Margin="0,20,0,10" />
+                        <Button Text="Contact Freelancer" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="20" FontAttributes="Bold" FontSize="18" Margin="0,0,0,10" />
+                    </StackLayout>
+                </StackLayout>
+
+                <!-- Logout button -->
+                <Button Grid.Row="0" Text="Logout" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" HorizontalOptions="End" VerticalOptions="Start" Margin="0,20,20,0" WidthRequest="60" HeightRequest="30" CornerRadius="15"/>
+
+                <!-- Tab buttons -->
+                <StackLayout Grid.Row="1" Orientation="Horizontal" BackgroundColor="#8a3ab9" Spacing="0" HorizontalOptions="FillAndExpand">
+                    <Label Text="Settings" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                    <BoxView BackgroundColor="#F5F5DC" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                    <Label Text="Job History" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                    <BoxView BackgroundColor="#F5F5DC" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                    <Label Text="Current Jobs" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                    <BoxView BackgroundColor="#F5F5DC" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                    <Label Text="Payment Info" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

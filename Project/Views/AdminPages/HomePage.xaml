@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.AdminPages.HomePage"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <Grid RowDefinitions="Auto,*">
+                <Grid ColumnDefinitions="Auto,*,60" Margin="20" ColumnSpacing="10">
+                    <Frame BorderColor="Transparent" BackgroundColor="Transparent" CornerRadius="60" HeightRequest="80" WidthRequest="80" Padding="0">
+                        <Image x:Name="AdminImage" Aspect="Fill" />
+                    </Frame>
+                    <Label Grid.Column="1" Text="@Admin123" TextColor="Gray" FontAttributes="Bold" VerticalOptions="CenterAndExpand" VerticalTextAlignment="Center"></Label>
+                    <Button Grid.Column="2" Text="Logout" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" VerticalOptions="CenterAndExpand" CornerRadius="15" Clicked="LogoutButton_Clicked"/>
+                </Grid>
+                <Label Grid.Row="1" Text="Welcome To Admin Portal" FontSize="34" FontAttributes="Bold"  TextColor="Gray" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                <Grid Grid.Row="1" ColumnDefinitions="*,Auto,*,Auto,*" BackgroundColor="#8a3ab9" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+                    <Label Text="Registration Requests" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView Grid.Column="1" BackgroundColor="#F5F5DC" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                    <Label Grid.Column="2" Text="Client Profiles" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView Grid.Column="3" BackgroundColor="#F5F5DC" WidthRequest="1" VerticalOptions="FillAndExpand" />
+                    <Label Grid.Column="4" Text="Freelancer Profiles" TextColor="White" FontSize="16" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Grid>
+            <ActivityControl:Loader x:Name="Isbusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

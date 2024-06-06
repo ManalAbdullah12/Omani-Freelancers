@@ -1,0 +1,57 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.ClientChat"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC"
+             Title="Client Chat"
+             x:Name="this">
+
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout>
+                <Label x:Name="FreelancerName" TextColor="Gray" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                <Label x:Name="JobTitle" TextColor="Gray" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"></Label>
+                <ListView x:Name="ChatListView"
+          Margin="20"
+          HasUnevenRows="True"
+          SeparatorVisibility="None"
+          ItemSelected="ChatListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout.Resources>
+                                        <Style x:Key="text" TargetType="Label">
+                                            <Setter Property="TextColor" Value="Black" />
+                                            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                                            <Style.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsSend}" Value="false">
+                                                    <Setter Property="TextColor" Value="Blue" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsSend}" Value="true">
+                                                    <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackLayout.Resources>
+                                    <Label Text="{Binding Message}" Style="{StaticResource text}" TextColor="Black" />
+                                    <Label Text="{Binding Timestamp}" Style="{StaticResource text}" TextColor="Gray" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Padding="10" BackgroundColor="White" RowDefinitions="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Name="MessageEntry" Placeholder="Enter your message" />
+                    <Button Text="Send" Clicked="SendButton_Clicked" Grid.Column="1" BackgroundColor="#8a3ab9" TextColor="White" />
+                </Grid>
+            </StackLayout>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

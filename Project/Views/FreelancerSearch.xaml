@@ -1,0 +1,21 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.FreelancerSearch"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC">
+
+    <ContentPage.Content>
+        <Grid>
+        <ScrollView>
+            <StackLayout x:Name="MainLayout" Padding="20">
+                <!-- Back Button -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Start">
+                    <Button Text="Back" BackgroundColor="#8a3ab9" TextColor="White" FontSize="9" FontAttributes="Bold" WidthRequest="60" HeightRequest="30" CornerRadius="15" Clicked="BackButton_Clicked"/>
+                    <Label Text="Search Results!" FontSize="24" FontAttributes="Bold" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="20,0,0,0" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

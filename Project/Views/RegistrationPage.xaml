@@ -1,0 +1,140 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             x:Class="Project.Views.RegistrationPage"
+             BackgroundColor="#F5F5DC">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="CustomCheckBoxStyle" TargetType="CheckBox">
+                <Setter Property="Color" Value="Black"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout VerticalOptions="CenterAndExpand" Spacing="20" Margin="10">
+                    <Image x:Name="LogoImage"
+                           HeightRequest="150"
+                           Aspect="AspectFit"
+                           VerticalOptions="Start"/>
+                    <!-- Title -->
+                    <Label TextColor="Gray" Text="Register for the Omani Freelancers App" FontSize="24" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" />
+
+                    <StackLayout Margin="20,10" x:Name="PostPhoto">
+                        <Label Text="Photo *" TextColor="Red"/>
+                        <Button Text="Upload Photo" Clicked="OnUploadPhotoClicked" TextColor="Black" BackgroundColor="LightGray"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="20,10" x:Name="IdCard">
+                        <Label Text="ID Card Picture *" TextColor="Red"/>
+                        <Button Text="Upload ID Card Photo" Clicked="OnUploadIDPhotoClicked" TextColor="Black" BackgroundColor="LightGray"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="10" Spacing="20">
+                        <!-- User Name Entry -->
+
+                        <StackLayout>
+                            <Label Text="ID Card Number *" TextColor="Red"/>
+                            <Entry Placeholder="Enter ID Card Number" FontSize="16" x:Name="EntryCardNumber" PlaceholderColor="Red" TextColor="Black" Keyboard="Numeric"/>
+                        </StackLayout>
+
+                        <StackLayout>
+                            <Label Text="User Name *" TextColor="Red"/>
+                            <Entry Placeholder="Enter UserName" FontSize="16" x:Name="EntryUserName" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Password Entry -->
+                        <StackLayout>
+                            <Label Text="Password *" TextColor="Red"/>
+                            <Entry Placeholder="Enter Password" FontSize="16" x:Name="EntryUserPassword" PlaceholderColor="Red" IsPassword="True" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Confirm Password Entry -->
+                        <StackLayout>
+                            <Label Text="Confirm Password *" TextColor="Red"/>
+                            <Entry Placeholder="Confirm Password" FontSize="16" x:Name="EntryConfirmPassword" PlaceholderColor="Red" IsPassword="True" TextColor="Black"/>
+                            <!-- Error Label for Password Confirmation -->
+                            <Label x:Name="PasswordErrorLabel" TextColor="Red" Margin="0,5,0,0" IsVisible="False"/>
+                        </StackLayout>
+
+                        <!-- Name Entry -->
+                        <StackLayout>
+                            <Label Text="Name *" TextColor="Red"/>
+                            <Entry Placeholder="Enter Name" FontSize="16" x:Name="EntryName" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Last Name Entry -->
+                        <StackLayout>
+                            <Label Text="Last Name *" TextColor="Red"/>
+                            <Entry Placeholder="Enter LastName" FontSize="16" x:Name="EntryLastName" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Email Entry -->
+                        <StackLayout>
+                            <Label Text="Email *" TextColor="Red"/>
+                            <Entry Placeholder="Enter Email" FontSize="16" x:Name="EntryUserEmail" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- Phone Number Entry -->
+                        <StackLayout>
+                            <Label Text="Phone Number *" TextColor="Red"/>
+                            <Entry Placeholder="Enter Phone Number" FontSize="16" x:Name="EntryUserPhoneNumber" PlaceholderColor="Red" Keyboard="Telephone" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- User Type Selection -->
+                        <StackLayout>
+                            <Label Text="User Type *" TextColor="Red"/>
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <CheckBox x:Name="ClientCheckBox" Style="{StaticResource CustomCheckBoxStyle}" IsChecked="{Binding IsCheckedClient}" CheckedChanged="ClientCheckBox_CheckedChanged" />
+                                    <Label Text="Client" FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                    <CheckBox x:Name="FreelancerCheckBox" Style="{StaticResource CustomCheckBoxStyle}" IsChecked="{Binding IsCheckedFreelancer}" CheckedChanged="FreelancerCheckBox_CheckedChanged" />
+                                    <Label Text="Freelancer" FontSize="18" TextColor="Black" FontAttributes="Bold" Margin="10,0" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- Freelancer Type Dropdown -->
+                        <StackLayout x:Name="FreelancerTypeStack" IsVisible="False">
+                            <Label Text="Type of Freelancer" TextColor="Red"/>
+                            <Picker x:Name="FreelancerTypePicker" Title="Select Freelancer Type" SelectedIndexChanged="FreelancerTypePicker_SelectedIndexChanged">
+                                <Picker.ItemsSource>
+                                    <x:Array Type="{x:Type x:String}">
+                                        <x:String>Graphic Designer</x:String>
+                                        <x:String>Web Developer</x:String>
+                                        <x:String>Content Writer</x:String>
+                                        <x:String>Social Media Manager</x:String>
+                                        <x:String>SEO Specialist</x:String>
+                                        <x:String>Virtual Assistant</x:String>
+                                        <x:String>Photographer</x:String>
+                                        <x:String>Video Editor</x:String>
+                                        <x:String>Copywriter</x:String>
+                                        <x:String>Translator</x:String>
+                                        <x:String>Other</x:String>
+                                    </x:Array>
+                                </Picker.ItemsSource>
+                            </Picker>
+                        </StackLayout>
+
+                        <!-- Other Freelancer Type Entry -->
+                        <StackLayout x:Name="OtherFreelancerTypeStack" IsVisible="False">
+                            <Label Text="Please specify *" TextColor="Red"/>
+                            <Entry Placeholder="Freelancer Type" FontSize="16" x:Name="OtherFreelancerTypeEntry" PlaceholderColor="Red" TextColor="Black"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Spacing="10">
+                        <!-- Register Button -->
+                        <Button Text="Register" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Clicked="Button_Clicked"/>
+                        <!-- Back Button -->
+                        <Button Text="Back" BackgroundColor="#8a3ab9" TextColor="White" CornerRadius="10" Clicked="BackButton_Clicked"/>
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="IsBusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

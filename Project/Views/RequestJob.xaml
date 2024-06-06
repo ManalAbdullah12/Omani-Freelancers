@@ -1,0 +1,99 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Project.Views.RequestJob"
+             xmlns:ActivityControl="clr-namespace:Project.Controls"
+             BackgroundColor="#F5F5DC"
+             x:Name="this">
+    <ContentPage.Content>
+        <Grid>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <!-- Title -->
+                    <Label Text="Request Job" FontSize="24" FontAttributes="Bold" HorizontalOptions="Start" Margin="0,0,0,20" />
+
+                    <!-- Job Title Entry -->
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Activity" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="*" FontSize="16" TextColor="Red" />
+                    </StackLayout>
+                    <Entry x:Name="EntryJobTitle" Placeholder="Enter Activity*" />
+
+                    <!-- Job Description Entry -->
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,5">
+                        <Label Text="Job Description" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="*" FontSize="16" TextColor="Red" />
+                    </StackLayout>
+                    <Editor x:Name="EntryJobDescription" Placeholder="Enter job description in detail here*" HeightRequest="100" Text="{Binding JobDescription}" />
+
+                    <!-- Calendar Label -->
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,5">
+                        <Label Text="Starting Date" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="*" FontSize="16" TextColor="Red" />
+                    </StackLayout>
+                    <!-- Implement calendar control here -->
+                    <DatePicker x:Name="CalendarPicker" Margin="0,0,0,20" />
+
+                    <!-- Timeline Dropdown -->
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,5">
+                        <Label Text="Timeline" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="*" FontSize="16" TextColor="Red" />
+                    </StackLayout>
+                    <Picker x:Name="PickerTimeline" Title="Select Timeline*" BackgroundColor="#F5F5DC">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Less than 5 Hrs</x:String>
+                                <x:String>5 to 15 Hrs</x:String>
+                                <x:String>1 Day</x:String>
+                                <x:String>1-2 Days</x:String>
+                                <x:String>3-7 Days</x:String>
+                                <x:String>1-2 Weeks</x:String>
+                                <x:String>3 Weeks</x:String>
+                                <x:String>1 month</x:String>
+                                <x:String>1-2 months</x:String>
+                                <x:String>More than 2 months</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <!-- Target Price Entry -->
+                    <StackLayout Orientation="Horizontal" Margin="0,20,0,5">
+                        <Label Text="Maximum Budget" FontSize="16" FontAttributes="Bold" />
+                        <Label Text="*" FontSize="16" TextColor="Red" />
+                    </StackLayout>
+                    <Entry x:Name="Price" Placeholder="Enter maximum budget in OMR*" Keyboard="Numeric" />
+
+                    <StackLayout Margin="0,20,0,5">
+                        <Label FontAttributes="Bold" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="ID Card Number "></Span>
+                                    <Span Text="*" TextColor="Red"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Entry Placeholder="Enter ID Card Number" FontSize="16" x:Name="EntryCardNumber" TextColor="Black" Keyboard="Numeric"/>
+                    </StackLayout>
+
+                    <StackLayout Margin="0,20,0,5">
+                        <Label FontAttributes="Bold" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Phone Number "></Span>
+                                    <Span Text="*" TextColor="Red"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Entry Placeholder="Enter Phone Number" FontSize="16" x:Name="EntryUserPhoneNumber" Keyboard="Telephone" TextColor="Black"/>
+                    </StackLayout>
+
+                    <!-- Submit and Back Buttons -->
+                    <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
+                        <Button Text="Submit Job" BackgroundColor="#8a3ab9" TextColor="White" Clicked="SubmitJob_Clicked" Margin="0,40,10,0" CornerRadius="15" />
+                        <Button Text="Back" BackgroundColor="#8a3ab9" TextColor="White" Clicked="BackButton_Clicked" Margin="10,40,0,0" CornerRadius="15" />
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ActivityControl:Loader x:Name="Isbusy" IsVisible="false"></ActivityControl:Loader>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
